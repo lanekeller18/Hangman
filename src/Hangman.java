@@ -26,12 +26,12 @@ public class Hangman {
                 player2 = keyboard.nextLine();
                 System.out.println("Well, " + player1 + " what word/words would you like to choose?");
                 chosenWord = keyboard.nextLine().toLowerCase();
+                System.out.println(displayHangman(i));
 
 
 
-                System.out.println("Ok," + player2 + " start by guessing a letter.");
+                System.out.println("Ok, " + player2 + " start by guessing a letter.");
 
-               System.out.println(displayHangman(i));
 
 
 
@@ -59,7 +59,7 @@ public class Hangman {
                           "|               |\n"+
                           "|               |\n"+
                           "|               |\n"+
-                          "|               |\n"+
+                          "|              0|\n"+
                           "+---------------+\n";
 
                 break;
@@ -71,7 +71,7 @@ public class Hangman {
                           "|               |\n"+
                           "|               |\n"+
                           "|               |\n"+
-                          "|               |\n"+
+                          "|              1|\n"+
                           "+---------------+\n";
 
 
@@ -85,7 +85,7 @@ public class Hangman {
                           "|               |\n"+
                           "|               |\n"+
                           "|               |\n"+
-                          "|               |\n"+
+                          "|              2|\n"+
                           "+---------------+\n";
 
                 break;
@@ -97,7 +97,7 @@ public class Hangman {
                           "|       |       |\n"+
                           "|               |\n"+
                           "|               |\n"+
-                          "|               |\n"+
+                          "|              3|\n"+
                           "+---------------+\n";
 
                 break;
@@ -109,7 +109,7 @@ public class Hangman {
                           "|       |       |\n"+
                           "|      /        |\n"+
                           "|               |\n"+
-                          "|               |\n"+
+                          "|              4|\n"+
                           "+---------------+\n";
 
                 break;
@@ -121,7 +121,7 @@ public class Hangman {
                           "|       |       |\n"+
                           "|      / \\      |\n"+
                           "|               |\n"+
-                          "|               |\n"+
+                          "|              5|\n"+
                           "+---------------+\n";
 
                 break;
@@ -133,7 +133,7 @@ public class Hangman {
                           "|       |       |\n"+
                           "|      / \\      |\n"+
                           "|     /         |\n"+
-                          "|               |\n"+
+                          "|              6|\n"+
                           "+---------------+\n";
                 break;
             case 7:
@@ -144,7 +144,7 @@ public class Hangman {
                           "|       |       |\n"+
                           "|      / \\      |\n"+
                           "|     /   \\     |\n"+
-                          "|               |\n"+
+                          "|              7|\n"+
                           "+---------------+\n";
                 break;
             case 8:
@@ -155,7 +155,7 @@ public class Hangman {
                           "|       |       |\n"+
                           "|      / \\      |\n"+
                           "|    _/   \\     |\n"+
-                          "|               |\n"+
+                          "|              8|\n"+
                           "+---------------+\n";
                 break;
             case 9:
@@ -166,7 +166,7 @@ public class Hangman {
                           "|       |       |\n"+
                           "|      / \\      |\n"+
                           "|    _/   \\_    |\n"+
-                          "|               |\n"+
+                          "|              9|\n"+
                           "+---------------+\n";
                 break;
             case 10:
@@ -177,7 +177,7 @@ public class Hangman {
                           "|       |       |\n"+
                           "|      / \\      |\n"+
                           "|    _/   \\_    |\n"+
-                          "|               |\n"+
+                          "|             10|\n"+
                           "+---------------+\n";
                 break;
             case 11:
@@ -188,7 +188,7 @@ public class Hangman {
                           "|       |       |\n"+
                           "|      / \\      |\n"+
                           "|    _/   \\_    |\n"+
-                          "|               |\n"+
+                          "|             11|\n"+
                           "+---------------+\n";
                 break;
             case 12:
@@ -199,7 +199,7 @@ public class Hangman {
                           "|       |       |\n"+
                           "|      / \\      |\n"+
                           "|    _/   \\_    |\n"+
-                          "|               |\n"+
+                          "|             12|\n"+
                           "+---------------+\n";
                 break;
             case 13:
@@ -210,18 +210,18 @@ public class Hangman {
                           "|       |       |\n"+
                           "|      / \\      |\n"+
                           "|    _/   \\_    |\n"+
-                          "|               |\n"+
+                          "|             13|\n"+
                           "+---------------+\n";
                 break;
             case 14:
                 display = "+---------------+\n"+
                           "|       |       |\n"+
                           "|       O       |\n"+
-                          "|   \\_/|\\_     |\n"+
+                          "|    \\_/|\\_    |\n"+
                           "|       |       |\n"+
                           "|      / \\      |\n"+
                           "|    _/   \\_    |\n"+
-                          "|               |\n"+
+                          "|             14|\n"+
                           "+---------------+\n";
                 break;
             case 15:
@@ -232,7 +232,7 @@ public class Hangman {
                         "|       |       |\n"+
                         "|      / \\      |\n"+
                         "|    _/   \\_    |\n"+
-                        "|               |\n"+
+                        "|             15|\n"+
                         "+---------------+\n";
                 break;
         }
@@ -255,4 +255,12 @@ public class Hangman {
 
 
     }
+
+    public static String[] breakDownPhrase(String chosenWord){
+        String[] breakDownPhrase = chosenWord.split(" ");
+        return breakDownPhrase;
+    }
+
+
 }
+
