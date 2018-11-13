@@ -11,13 +11,14 @@ public class Hangman {
         String again;
         String wrongLetter;
         String guessedLetter;
+        String[] currentGuessbreakdown;
 
 
 
         keyboard = new Scanner(System.in);
         do {
             again = "";
-            for (int i=0;i<=15;i++) {
+
                 System.out.println("Hello welcome to the game where you Hang A Man or maybe not.");
                 System.out.println("Pretty much one person chooses a word and the other person has to guess the word.");
                 System.out.println("Who is the person choosing the word name?");
@@ -26,18 +27,20 @@ public class Hangman {
                 player2 = keyboard.nextLine();
                 System.out.println("Well, " + player1 + " what word/words would you like to choose?");
                 chosenWord = keyboard.nextLine().toLowerCase();
-                System.out.println(displayHangman(i));
 
-
-
+                System.out.println(displayHangman(0));
+                System.out.println(chosenWord);
+                currentGuessbreakdown = breakdownphrase(chosenWord);
+                for (String tempWord: currentGuessbreakdown) {
+                    for (int i = 0; i < tempWord.length(); i++) {
+                        System.out.print("-");
+                    }
+                    System.out.print(" ");
+                }
                 System.out.println("Ok, " + player2 + " start by guessing a letter.");
 
 
 
-
-
-
-            }
 
 
             System.out.println("Would you like to play again?");
@@ -256,9 +259,9 @@ public class Hangman {
 
     }
 
-    public static String[] breakDownPhrase(String chosenWord){
-        String[] breakDownPhrase = chosenWord.split(" ");
-        return breakDownPhrase;
+    public static String[] breakdownphrase(String chosenWord){
+        String[] breakdownphrase = chosenWord.split(" ");
+        return breakdownphrase;
     }
 
 
