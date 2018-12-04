@@ -9,17 +9,15 @@ public class Hangman {
         String player1;
         String player2;
         String again;
-        String wrongLetter;
-        String guessedLetter;
+        String guess;
         String[] currentGuessbreakdown;
 
 
 
         keyboard = new Scanner(System.in);
         do {
-            again = "";
 
-                System.out.println("Hello welcome to the game where you Hang A Man or maybe not.");
+            System.out.println("Hello welcome to the game where you Hang A Man or maybe not.");
                 System.out.println("Pretty much one person chooses a word and the other person has to guess the word.");
                 System.out.println("Who is the person choosing the word name?");
                 player1 = keyboard.nextLine();
@@ -29,7 +27,7 @@ public class Hangman {
                 chosenWord = keyboard.nextLine().toLowerCase();
 
                 System.out.println(displayHangman(0));
-                System.out.println(chosenWord);
+                //System.out.println(chosenWord);
                 currentGuessbreakdown = breakdownphrase(chosenWord);
                 for (String tempWord: currentGuessbreakdown) {
                     for (int i = 0; i < tempWord.length(); i++) {
@@ -37,7 +35,28 @@ public class Hangman {
                     }
                     System.out.print(" ");
                 }
+
+                System.out.println(" ");
                 System.out.println("Ok, " + player2 + " start by guessing a letter.");
+                guess = keyboard.nextLine().toLowerCase();
+
+
+
+               for (int t=0; t<15; t++) {
+                   if (chosenWord.contains(guess)) {
+                       System.out.println("xd");
+
+                   }
+
+                   else{
+                       System.out.println("You have guessed wrong!");
+                       System.out.println(displayHangman(t+1));
+                   }
+
+               }
+
+
+
 
 
 
@@ -229,14 +248,14 @@ public class Hangman {
                 break;
             case 15:
                 display = "+---------------+\n"+
-                        "|       |       |\n"+
-                        "|       O       |\n"+
-                        "|    \\_/|\\_/    |\n"+
-                        "|       |       |\n"+
-                        "|      / \\      |\n"+
-                        "|    _/   \\_    |\n"+
-                        "|             15|\n"+
-                        "+---------------+\n";
+                          "|       |       |\n"+
+                          "|       O       |\n"+
+                          "|    \\_/|\\_/    |\n"+
+                          "|       |       |\n"+
+                          "|      / \\      |\n"+
+                          "|    _/   \\_    |\n"+
+                          "|             15|\n"+
+                          "+---------------+\n";
                 break;
         }
 
@@ -263,6 +282,8 @@ public class Hangman {
         String[] breakdownphrase = chosenWord.split(" ");
         return breakdownphrase;
     }
+
+
 
 
 }
