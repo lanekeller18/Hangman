@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.Scanner;
 
 public class Hangman {
@@ -9,59 +10,69 @@ public class Hangman {
         String player1;
         String player2;
         String again;
-        String guess;
+        char guess;
+        int player1points;
+        int player2points;
         String[] currentGuessbreakdown;
 
 
 
+
         keyboard = new Scanner(System.in);
-        do {
+
+            player1points=0;
+            player2points=0;
 
             System.out.println("Hello welcome to the game where you Hang A Man or maybe not.");
                 System.out.println("Pretty much one person chooses a word and the other person has to guess the word.");
+                do {
                 System.out.println("Who is the person choosing the word name?");
                 player1 = keyboard.nextLine();
                 System.out.println("And who is the person guessing name?");
                 player2 = keyboard.nextLine();
                 System.out.println("Well, " + player1 + " what word/words would you like to choose?");
                 chosenWord = keyboard.nextLine().toLowerCase();
+                String currentGuessPhrase = setHiddenWord(chosenWord);
+                String hiddenWord = setHiddenWord(chosenWord);
 
-                System.out.println(displayHangman(0));
+
                 //System.out.println(chosenWord);
-                currentGuessbreakdown = breakdownphrase(chosenWord);
-                for (String tempWord: currentGuessbreakdown) {
-                    for (int i = 0; i < tempWord.length(); i++) {
-                        System.out.print("-");
-                    }
-                    System.out.print(" ");
-                }
+
 
                 System.out.println(" ");
-                System.out.println("Ok, " + player2 + " start by guessing a letter.");
-                guess = keyboard.nextLine().toLowerCase();
+                for(int t=0; t<15;) {
+                System.out.println("Ok, " + player2 + ", guess a letter.");
+                String guess1 = keyboard.nextLine().toLowerCase();
+
+                guess = guess1.charAt(0);
+                    System.out.println(showLettersGussed(guess,hiddenWord,chosenWord));
+                    System.out.println(displayHangman(0));
 
 
 
-               for (int t=0; t<15; t++) {
-                   if (chosenWord.contains(guess)) {
-                       System.out.println("xd");
 
+                   if (chosenWord.contains(guess1)) {
+                       System.out.println(showLettersGussed(guess, hiddenWord, chosenWord));
                    }
-
                    else{
                        System.out.println("You have guessed wrong!");
-                       System.out.println(displayHangman(t+1));
+                       System.out.println(displayHangman(t++));
                    }
 
-               }
+                   }
 
+                /*if (guess.contains("-")){
+                System.out.println("You, "+ player2+ ", loses and "+ player1+ " wins!");
+                player1points +=1;
+                 }
+                else{
+                System.out.println(player2+ " Wins, while "+ player1+" loses.");
+                player2points +=1;
 
+                 }
+                 System.out.println(player1+ "'s points are "+ player1points+ "and "+ player2+ "'s points are "+ player2points);
 
-
-
-
-
-
+*/
             System.out.println("Would you like to play again?");
             again = keyboard.next() .toLowerCase();
         }while(again.equals("yes"));
@@ -277,14 +288,43 @@ public class Hangman {
 
 
     }
-
     public static String[] breakdownphrase(String chosenWord){
         String[] breakdownphrase = chosenWord.split(" ");
         return breakdownphrase;
+    }
+    private static String setHiddenWord(String chosenWord){
+        return chosenWord.replaceAll("\\S", "-");
+    }
+    private static String showLettersGussed(char guess, String hiddenWord, String chosenWord) {
+        char[] cChosen = chosenWord.toCharArray();
+        char[] cHidden = hiddenWord.toCharArray();
+        for (int i = 0; i < cHidden.length; i++) {
+           if(cChosen[i] == guess) {
+               cHidden[i] = cChosen[i];
+           }
+            hiddenWord = new String(cHidden);
+        }
+        return hiddenWord;
+
+    }
+    private static boolean isletterright(String currentGuessPhrase,char guess){
+        if (currentGuessPhrase.contains(String.valueOf(guess))){
+            return true;
+        }
+        if (String.valueOf(guess).length() > 2){
+            return false;
+        }
+        for ()
+
+
     }
 
 
 
 
-}
+
+
+
+
+
 
