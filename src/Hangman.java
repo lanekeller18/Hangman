@@ -13,6 +13,8 @@ public class Hangman {
         char guess;
         int player1points;
         int player2points;
+        String guess3;
+        int tries;
         String[] currentGuessbreakdown;
 
 
@@ -22,6 +24,7 @@ public class Hangman {
 
             player1points=0;
             player2points=0;
+            tries=0;
 
             System.out.println("Hello welcome to the game where you Hang A Man or maybe not.");
                 System.out.println("Pretty much one person chooses a word and the other person has to guess the word.");
@@ -39,29 +42,27 @@ public class Hangman {
                 //System.out.println(chosenWord);
 
 
+                    guess3= " ";
                 System.out.println(" ");
-                for(int t=0; t<15;) {
+
                 System.out.println("Ok, " + player2 + ", guess a letter.");
                 String guess1 = keyboard.nextLine().toLowerCase();
-
-                guess = guess1.charAt(0);
-                    System.out.println(showLettersGussed(guess,hiddenWord,chosenWord));
+                do {
+                    guess = guess1.charAt(0);
+                    System.out.println(showLettersGussed(guess, hiddenWord, chosenWord));
+                    hiddenWord = showLettersGussed(guess, hiddenWord, chosenWord);
                     System.out.println(displayHangman(0));
 
+                    if (chosenWord.contains(guess1)) {
+                        System.out.println(showLettersGussed(guess, hiddenWord, chosenWord));
+                    } else {
+                        System.out.println("You have guessed wrong!");
+                        System.out.println(displayHangman(0 + 1));
+                        tries <= +1;
+                    }
 
-
-
-                   if (chosenWord.contains(guess1)) {
-                       System.out.println(showLettersGussed(guess, hiddenWord, chosenWord));
-                   }
-                   else{
-                       System.out.println("You have guessed wrong!");
-                       System.out.println(displayHangman(t++));
-                   }
-
-                   }
-
-                /*if (guess.contains("-")){
+                }while(hiddenWord.contains("-") && tries=15 );
+               if (guess3.contains("-")){
                 System.out.println("You, "+ player2+ ", loses and "+ player1+ " wins!");
                 player1points +=1;
                  }
@@ -70,9 +71,7 @@ public class Hangman {
                 player2points +=1;
 
                  }
-                 System.out.println(player1+ "'s points are "+ player1points+ "and "+ player2+ "'s points are "+ player2points);
-
-*/
+                 System.out.println(player1+ "'s points are "+ player1points+ " and "+ player2+ "'s points are "+ player2points);
             System.out.println("Would you like to play again?");
             again = keyboard.next() .toLowerCase();
         }while(again.equals("yes"));
@@ -307,15 +306,15 @@ public class Hangman {
         return hiddenWord;
 
     }
-    private static boolean isletterright(String currentGuessPhrase,char guess){
+   /*private static boolean isletterright(String currentGuessPhrase,char guess){
         if (currentGuessPhrase.contains(String.valueOf(guess))){
             return true;
         }
         if (String.valueOf(guess).length() > 2){
             return false;
         }
-        for ()
-
+        ;
+    }*/
 
     }
 
