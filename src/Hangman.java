@@ -1,4 +1,4 @@
-import java.awt.*;
+
 import java.util.Scanner;
 
 public class Hangman {
@@ -58,10 +58,10 @@ public class Hangman {
                     } else {
                         System.out.println("You have guessed wrong!");
                         System.out.println(displayHangman(0 + 1));
-                        tries <= +1;
+                        tries++;
                     }
 
-                }while(hiddenWord.contains("-") && tries=15 );
+                }while(!hiddenWord.contains("-") && tries<=15 );
                if (guess3.contains("-")){
                 System.out.println("You, "+ player2+ ", loses and "+ player1+ " wins!");
                 player1points +=1;
@@ -306,15 +306,7 @@ public class Hangman {
         return hiddenWord;
 
     }
-   /*private static boolean isletterright(String currentGuessPhrase,char guess){
-        if (currentGuessPhrase.contains(String.valueOf(guess))){
-            return true;
-        }
-        if (String.valueOf(guess).length() > 2){
-            return false;
-        }
-        ;
-    }*/
+
 
     }
 
